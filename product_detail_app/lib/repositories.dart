@@ -1,66 +1,95 @@
 import 'models.dart';
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 
 abstract class IProductRepository {
   Future<Product> fetchProductById(String id);
+  Future<void> toggleFavorite(String productId, bool isFavorite);
+  Future<void> addToCart(String productId, String variationId, String deliveryId);
+  Future<void> createOrder(String productId, String variationId, String deliveryId);
 }
 
 class MockProductRepository implements IProductRepository {
   @override
   Future<Product> fetchProductById(String id) async {
-    // Simulate network delay
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
 
-    // Return mock data
     return Product(
       id: id,
-      title: "Mock Product",
-      price: 29.99,
-      description: "This is a mock product used for demonstration purposes.",
+      price: 17.00,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam arcu mauris. scelerisque eu mauris id. pretium pulvinar sapien",
       images: [
-        "https://via.placeholder.com/150",
-        "https://via.placeholder.com/200"
+        "https://picsum.photos/800/450?random=1",
+        "https://picsum.photos/800/450?random=2",
+        "https://picsum.photos/800/450?random=3"
       ],
       variations: [
-        Variation(
+        const Variation(
           id: "v1",
-          color: "Red",
+          color: "Pink",
           size: "M",
-          image: "https://via.placeholder.com/150/FF0000",
-        ),
-        Variation(
-          id: "v2",
-          color: "Blue",
-          size: "L",
-          image: "https://via.placeholder.com/150/0000FF",
+          image: "https://picsum.photos/800/450?random=2",
         ),
       ],
-      deliveryOptions: [
-        DeliveryOption(
+      specifications: const [
+        Specification(
+          name: "Material",
+          details: ["Cotton 95%", "Nylon 5%"],
+        ),
+        Specification(
+          name: "Origin",
+          details: ["EU"],
+        ),
+      ],
+      deliveryMethods: [
+        const DeliveryOption(
           id: "d1",
-          name: "Standard Shipping",
+          name: "Standard",
           eta: "5-7 days",
           price: 4.99,
         ),
-        DeliveryOption(
+        const DeliveryOption(
           id: "d2",
-          name: "Express Shipping",
-          eta: "2-3 days",
-          price: 9.99,
+          name: "Express",
+          eta: "1-2 days",
+          price: 12.00,
         ),
       ],
       reviews: [
-        Review(
-          user: "Alice",
+        const Review(
+          user: "Veronika",
           rating: 4.5,
-          text: "Great product! Highly recommend.",
-        ),
-        Review(
-          user: "Bob",
-          rating: 3.0,
-          text: "It's okay, does the job.",
+          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         ),
       ],
     );
+  }
+
+  @override
+  Future<void> toggleFavorite(String productId, bool isFavorite) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    debugPrint('Toggled favorite for product $productId to $isFavorite');
+  }
+
+  @override
+  Future<void> addToCart(String productId, String variationId, String deliveryId) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    
+    if (productId.isEmpty || variationId.isEmpty || deliveryId.isEmpty) {
+      throw Exception('Invalid cart parameters');
+    }
+    
+    debugPrint('Added to cart - Product: $productId, Variation: $variationId, Delivery: $deliveryId');
+  }
+
+  @override
+  Future<void> createOrder(String productId, String variationId, String deliveryId) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    
+    if (productId.isEmpty || variationId.isEmpty || deliveryId.isEmpty) {
+      throw Exception('Invalid order parameters');
+    }
+    
+    debugPrint('Created order - Product: $productId, Variation: $variationId, Delivery: $deliveryId');
   }
 }
