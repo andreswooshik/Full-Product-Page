@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'repositories.dart';
-import 'viewmodels.dart';
-import 'productdetailpage.dart';
+import 'pages/product_page.dart'; 
 
 void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (_) => ProductDetailViewModel(repository: MockProductRepository()),
-      child: const MyApp(),
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -19,9 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Product Page',
+      debugShowCheckedModeBanner: false,
+      title: "Product Page",
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const ProductDetailPage(productId: '1'),
+      home: const ProductPage(),
     );
   }
 }
