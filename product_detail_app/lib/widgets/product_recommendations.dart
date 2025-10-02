@@ -6,60 +6,118 @@ class ProductRecommendations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final products = [
-      Product(image: "assets/yml1.png", title: "Lorem ipsum dolor sit amet consectetur", price: "\$17.00"),
-      Product(image: "assets/mostpop4.png", title: "Lorem ipsum dolor sit amet consectetur", price: "\$17.00"),
-      Product(image: "assets/var1.png", title: "Lorem ipsum dolor sit amet consectetur", price: "\$17.00"),
-      Product(image: "assets/yml4.png", title: "Lorem ipsum dolor sit amet consectetur", price: "\$17.00"),
-      Product(image: "assets/yml5.png", title: "Lorem ipsum dolor sit amet consectetur", price: "\$17.00"),
-      Product(image: "assets/yml6.png", title: "Lorem ipsum dolor sit amet consectetur", price: "\$17.00"),
+    // Mock "You Might Like" recommendations matching the design
+    final List<Product> recommendations = [
+      Product(
+        id: "rec1",
+        title: "Stylish Look",
+        description: "Lorem ipsum dolor sit amet consectetur",
+        price: 17.00,
+        image: "assets/yml1.png",
+        specs: const ProductSpecifications(),
+      ),
+      Product(
+        id: "rec2", 
+        title: "Casual Style",
+        description: "Lorem ipsum dolor sit amet consectetur", 
+        price: 17.00,
+        image: "assets/yml4.png",
+        specs: const ProductSpecifications(),
+      ),
+      Product(
+        id: "rec3", 
+        title: "Premium Fashion",
+        description: "Lorem ipsum dolor sit amet consectetur", 
+        price: 17.00,
+        image: "assets/yml5.png",
+        specs: const ProductSpecifications(),
+      ),
+      Product(
+        id: "rec4", 
+        title: "Elegant Wear",
+        description: "Lorem ipsum dolor sit amet consectetur", 
+        price: 17.00,
+        image: "assets/yml6.png",
+        specs: const ProductSpecifications(),
+      ),
     ];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("You Might Like",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 12),
+          const Text(
+            "You Might Like",
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+              color: Colors.black87,
+            ),
+          ),
+          const SizedBox(height: 16),
           GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: products.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 2,
               childAspectRatio: 0.75,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 16,
             ),
+            itemCount: recommendations.length,
             itemBuilder: (context, index) {
-              final product = products[index];
+              final product = recommendations[index];
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Material(
-                    elevation: 3,
-                    borderRadius: BorderRadius.circular(12),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.asset(
-                        product.image,
-                        fit: BoxFit.cover,
-                        height: 160,
-                        width: double.infinity,
+                  Expanded(
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.grey[100],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          product.image,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              color: Colors.grey[200],
+                              child: const Icon(
+                                Icons.image_not_supported,
+                                color: Colors.grey,
+                                size: 40,
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 8),
-                  Text(product.title,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 13)),
+                  Text(
+                    product.description,
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.black,
+                      height: 1.3,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   const SizedBox(height: 4),
-                  Text(product.price,
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.bold)),
+                  Text(
+                    '\$${product.price.toStringAsFixed(2)}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 17,
+                      color: Colors.black87,
+                      letterSpacing: 0.2,
+                    ),
+                  ),
                 ],
               );
             },
