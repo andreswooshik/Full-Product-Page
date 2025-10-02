@@ -7,12 +7,12 @@ class ProductRecommendations extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final products = [
-      Product(image: "assets/yml1.png", title: "Casual Shirt", price: "\$17.00"),
-      Product(image: "assets/mostpop4.png", title: "Jeans", price: "\$25.00"),
-      Product(image: "assets/var1.png", title: "Hoodie", price: "\$30.00"),
-      Product(image: "assets/yml4.png", title: "Sneakers", price: "\$50.00"),
-      Product(image: "assets/yml5.png", title: "Cap", price: "\$10.00"),
-      Product(image: "assets/yml6.png", title: "Bag", price: "\$40.00"),
+      Product(image: "assets/yml1.png", title: "Lorem ipsum dolor sit amet consectetur", price: "\$17.00"),
+      Product(image: "assets/mostpop4.png", title: "Lorem ipsum dolor sit amet consectetur", price: "\$17.00"),
+      Product(image: "assets/var1.png", title: "Lorem ipsum dolor sit amet consectetur", price: "\$17.00"),
+      Product(image: "assets/yml4.png", title: "Lorem ipsum dolor sit amet consectetur", price: "\$17.00"),
+      Product(image: "assets/yml5.png", title: "Lorem ipsum dolor sit amet consectetur", price: "\$17.00"),
+      Product(image: "assets/yml6.png", title: "Lorem ipsum dolor sit amet consectetur", price: "\$17.00"),
     ];
 
     return Padding(
