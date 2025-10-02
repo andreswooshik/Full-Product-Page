@@ -67,7 +67,7 @@ class ProductPage extends StatelessWidget {
               const ProductReviews(),
               const ProductMostPopular(),
               const ProductRecommendations(),
-              const SizedBox(height: 100), // Extra space for bottom navigation
+              const SizedBox(height: 100), 
             ],
           ),
         ),
