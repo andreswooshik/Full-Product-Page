@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // Colors
@@ -25,31 +26,31 @@ class AppTheme {
     padding: const EdgeInsets.symmetric(vertical: 14),
   );
   
-  // Text Styles
-  static const TextStyle titleLarge = TextStyle(
+  
+  static TextStyle titleLarge = GoogleFonts.raleway(
     fontSize: 24,
     fontWeight: FontWeight.w800,
     color: textPrimary,
   );
   
-  static const TextStyle titleMedium = TextStyle(
+  static TextStyle titleMedium = GoogleFonts.raleway(
     fontSize: 21,
     fontWeight: FontWeight.w600,
     color: textPrimary,
   );
   
-  static const TextStyle priceStyle = TextStyle(
+  static TextStyle priceStyle = GoogleFonts.raleway(
     fontSize: 22,
     fontWeight: FontWeight.w800,
     color: textPrimary,
   );
   
-  static const TextStyle bodyText = TextStyle(
+  static TextStyle bodyText = GoogleFonts.nunitoSans(
     fontSize: 14,
     color: textSecondary,
   );
   
-  // Container Decorations
+  
   static BoxDecoration cardDecoration = BoxDecoration(
     color: cardColor,
     borderRadius: BorderRadius.circular(16),
@@ -67,7 +68,7 @@ class AppTheme {
     borderRadius: BorderRadius.circular(8),
   );
   
-  // Spacing
+  
   static const double spacingSmall = 8.0;
   static const double spacingMedium = 12.0;
   static const double spacingLarge = 20.0;
