@@ -6,7 +6,7 @@ class ProductRecommendations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Mock "You Might Like" recommendations matching the design
+    
     final List<Product> recommendations = [
       Product(
         id: "rec1",
@@ -21,7 +21,7 @@ class ProductRecommendations extends StatelessWidget {
         title: "Casual Style",
         description: "Lorem ipsum dolor sit amet consectetur", 
         price: 17.00,
-        image: "assets/yml4.png",
+        image: "assets/yml2.png",
         specs: const ProductSpecifications(),
       ),
       Product(
@@ -29,7 +29,7 @@ class ProductRecommendations extends StatelessWidget {
         title: "Premium Fashion",
         description: "Lorem ipsum dolor sit amet consectetur", 
         price: 17.00,
-        image: "assets/yml5.png",
+        image: "assets/yml3.png",
         specs: const ProductSpecifications(),
       ),
       Product(
@@ -37,7 +37,7 @@ class ProductRecommendations extends StatelessWidget {
         title: "Elegant Wear",
         description: "Lorem ipsum dolor sit amet consectetur", 
         price: 17.00,
-        image: "assets/yml6.png",
+        image: "assets/yml4.png",
         specs: const ProductSpecifications(),
       ),
     ];
